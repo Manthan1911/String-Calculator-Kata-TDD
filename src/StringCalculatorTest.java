@@ -23,8 +23,14 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void shouldReturnAdditionOfNumberIfStringIsSeperatedByComa() {
-        assertEquals("if string is coma seperated then addition of that values is returned by add() method", 3,
+    public void shouldReturnAdditionOfNumberIfStringIsSeparatedByComma() {
+        assertEquals("if string is comma separated then addition of that values is returned by add() method", 3,
                 strCalc.add("1,2"));
+    }
+
+    @Test
+    public void shouldReturnAdditionOfUnknownAmountOfNumbers() {
+        assertEquals("It shoud return sum of N number of comma separated values", 50,
+                strCalc.add("5,10,15,20"));
     }
 }
