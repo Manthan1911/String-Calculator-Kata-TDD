@@ -21,4 +21,10 @@ public class StringCalculatorTest {
         assertEquals("if only one number is provided then add() method should return that number itself", 100,
                 strCalc.add("100"));
     }
+
+    @Test
+    public void shouldReturnAdditionOfNumberIfStringIsSeperatedByComa() {
+        assertEquals("if string is coma seperated then addition of that values is returned by add() method", 3,
+                strCalc.add("1,2"));
+    }
 }
