@@ -33,4 +33,10 @@ public class StringCalculatorTest {
         assertEquals("It shoud return sum of N number of comma separated values", 50,
                 strCalc.add("5,10,15,20"));
     }
+
+    @Test
+    public void shouldReturnAdditionOfNumbersAlongWithAhphabets() {
+        assertEquals("It shoud return sum of N number of comma separated values along with alphabets", 6,
+                strCalc.add("1,2,a,b"));
+    }
 }
