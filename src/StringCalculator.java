@@ -4,6 +4,9 @@ class StringCalculator {
         if (str.equals("")) {
             return 0;
         }
+        if (str.length() > 0) {
+            return Integer.parseInt(str);
+        }
         return 1;
     }
 
