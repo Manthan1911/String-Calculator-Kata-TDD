@@ -2,6 +2,7 @@ import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 
 public class StringCalculatorTest {
 
@@ -65,6 +66,12 @@ public class StringCalculatorTest {
     @Test
     public void shouldAlsoReturnSumIfDelimiterIsNewLineAndComa() {
         assertEquals("\n can also be used as delimiter", 5, strCalc.add("1\na,3"));
+    }
+
+    @Test
+    public void shouldReturnTrueIfProvidedCharacterIsSpecialCharacter() {
+        assertTrue("Check that entered character is a Special Character and can be used as a Delimiter",
+                strCalc.isSpecialCharacter(';'));
     }
 
     @Test
