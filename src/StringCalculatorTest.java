@@ -1,6 +1,7 @@
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class StringCalculatorTest {
 
@@ -35,8 +36,17 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void shouldReturnAdditionOfNumbersAlongWithAhphabets() {
+    public void shouldReturnAdditionOfNumbersAlongWithAlphabets() {
         assertEquals("It shoud return sum of N number of comma separated values along with alphabets", 6,
                 strCalc.add("1,2,a,b"));
     }
+
+    @Test
+    public void shouldThrowExceptionIfNegativeNumberIsPresentInString() {
+        RuntimeException e = assertThrows(RuntimeException.class, () -> {
+            strCalc.add("1,2,-3,a");
+        });
+        assertEquals("Negatives not allowed : -3", e.getMessage());
+    }
+
 }
