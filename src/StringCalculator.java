@@ -1,6 +1,6 @@
 class StringCalculator {
 
-    public static boolean isSpecialCharacter(char s) {
+    public boolean isSpecialCharacter(char s) {
         if (!Character.isDigit(s) && !Character.isLetter(s) && !Character.isWhitespace(s)) {
             return true;
         }
@@ -12,10 +12,12 @@ class StringCalculator {
         if (str.equals("")) {
             return 0;
         }
+        // gets a custom delimiter from the string [example: ("//;\n1;2;3") here delimiter will be ; from index 2]
         if (str.startsWith("//") && isSpecialCharacter(str.charAt(2)) && str.contains("\n")) {
             delimiter = String.valueOf(str.charAt(2));
             str = str.substring(4);
         }
+
         if (str.contains(delimiter)) {
             int sum = 0;
             String negNums = "";
@@ -23,27 +25,33 @@ class StringCalculator {
 
             for (String currEl : splittedStr) {
                 String[] currElArr;
-                // convert currEl to array
+                
                 if (currEl.contains("\n")) {
                     currElArr = currEl.split("\n");
-                } else {
+                } 
+                else {
                     currElArr = new String[1];
                     currElArr[0] = currEl;
                 }
-                // iterate each element of that array
+
+                // iterate each element of array to calculate sum
                 for (String el : currElArr) {
                     if (el.matches("[a-z]")) {
                         sum += el.codePointAt(0) - 96;
-                    } else {
+                    } 
+                    else {
                         int parsedNo = Integer.parseInt(el);
+
                         // skip the iteration if number is greater than 1000
                         if (parsedNo > 1000) {
                             continue;
                         }
-                        // add element to list of negative Number
+                        
+                        // If number is negative than concat number to negNum string
                         if (parsedNo < 0) {
                             negNums += " " + String.valueOf(parsedNo);
-                        } else {
+                        } 
+                        else {
                             sum += parsedNo;
                         }
                     }
