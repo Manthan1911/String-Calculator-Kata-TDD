@@ -10,21 +10,34 @@ class StringCalculator {
             String[] splittedStr = str.split(",");
 
             for (String currEl : splittedStr) {
-                if (currEl.matches("[a-z]")) {
-                    sum += currEl.codePointAt(0) - 96;
+                String[] currElArr;
+                // convert currEl to array
+                if (currEl.contains("\n")) {
+                    currElArr = currEl.split("\n");
                 } else {
-                    int parsedNo = Integer.parseInt(currEl);
-                    // skip the iteration if number is greater than 1000
-                    if (parsedNo > 1000) {
-                        continue;
-                    }
-                    if (parsedNo < 0) {
-                        negNums += " " + String.valueOf(parsedNo);
+                    currElArr = new String[1];
+                    currElArr[0] = currEl;
+                }
+                // iterate each element of that array
+                for (String el : currElArr) {
+                    if (el.matches("[a-z]")) {
+                        sum += el.codePointAt(0) - 96;
                     } else {
-                        sum += parsedNo;
+                        int parsedNo = Integer.parseInt(el);
+                        // skip the iteration if number is greater than 1000
+                        if (parsedNo > 1000) {
+                            continue;
+                        }
+                        // add element to list of negative Number
+                        if (parsedNo < 0) {
+                            negNums += " " + String.valueOf(parsedNo);
+                        } else {
+                            sum += parsedNo;
+                        }
                     }
                 }
             }
+            // Throws exception if there exists any negative number
             if (negNums.length() != 0) {
                 throw new RuntimeException("Negatives not allowed :" + negNums);
             }
