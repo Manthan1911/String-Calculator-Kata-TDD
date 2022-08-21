@@ -61,4 +61,9 @@ public class StringCalculatorTest {
     public void shouldIgnoreNumberGreaterThanOneThousand() {
         assertEquals("If a number greater than 1000 is provided than ignore it", 2, strCalc.add("2,1001"));
     }
+
+    @Test
+    public void shouldAlsoReturnSumIfDelimiterIsNewLineAndComa() {
+        assertEquals("\n can also be used as delimiter", 5, strCalc.add("1\na,3"));
+    }
 }
