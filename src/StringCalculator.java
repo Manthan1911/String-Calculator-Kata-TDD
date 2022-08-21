@@ -12,7 +12,12 @@ class StringCalculator {
                 if (currEl.matches("[a-z]")) {
                     sum += currEl.codePointAt(0) - 96;
                 } else {
-                    sum += Integer.parseInt(currEl);
+                    int parsedNo = Integer.parseInt(currEl);
+                    if (parsedNo < 0) {
+                        throw new RuntimeException("Negatives not allowed : " + currEl);
+                    } else {
+                        sum += parsedNo;
+                    }
                 }
             }
             return sum;
