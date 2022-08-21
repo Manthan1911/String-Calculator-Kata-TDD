@@ -1,13 +1,25 @@
 class StringCalculator {
 
+    public static boolean isSpecialCharacter(char s) {
+        if (!Character.isDigit(s) && !Character.isLetter(s) && !Character.isWhitespace(s)) {
+            return true;
+        }
+        return false;
+    }
+
     public int add(String str) {
+        String delimiter = ",";
         if (str.equals("")) {
             return 0;
         }
-        if (str.contains(",")) {
+        if (str.startsWith("//") && isSpecialCharacter(str.charAt(2)) && str.contains("\n")) {
+            delimiter = String.valueOf(str.charAt(2));
+            str = str.substring(4);
+        }
+        if (str.contains(delimiter)) {
             int sum = 0;
             String negNums = "";
-            String[] splittedStr = str.split(",");
+            String[] splittedStr = str.split(delimiter);
 
             for (String currEl : splittedStr) {
                 String[] currElArr;
