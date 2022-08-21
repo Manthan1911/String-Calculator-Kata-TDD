@@ -66,4 +66,10 @@ public class StringCalculatorTest {
     public void shouldAlsoReturnSumIfDelimiterIsNewLineAndComa() {
         assertEquals("\n can also be used as delimiter", 5, strCalc.add("1\na,3"));
     }
+
+    @Test
+    public void shouldChangeDelimiterIfStringStartsWithTwoForwardSlash() {
+        assertEquals("If string starts with 2 forwardSlash followed by a special character then change delimiter", 3,
+                strCalc.add("//:\n1:2"));
+    }
 }
