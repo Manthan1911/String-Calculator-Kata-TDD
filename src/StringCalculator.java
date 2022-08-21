@@ -14,6 +14,10 @@ class StringCalculator {
                     sum += currEl.codePointAt(0) - 96;
                 } else {
                     int parsedNo = Integer.parseInt(currEl);
+                    // skip the iteration if number is greater than 1000
+                    if (parsedNo > 1000) {
+                        continue;
+                    }
                     if (parsedNo < 0) {
                         negNums += " " + String.valueOf(parsedNo);
                     } else {
