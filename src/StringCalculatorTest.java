@@ -49,4 +49,11 @@ public class StringCalculatorTest {
         assertEquals("Negatives not allowed : -3", e.getMessage());
     }
 
+    @Test
+    public void shouldThrowExceptionIfMultipleNegativeNumbersArePresentInString() {
+        RuntimeException e = assertThrows(RuntimeException.class, () -> {
+            strCalc.add("1,-2,-3,-7,a");
+        });
+        assertEquals("Negatives not allowed : -2 -3 -7", e.getMessage());
+    }
 }
