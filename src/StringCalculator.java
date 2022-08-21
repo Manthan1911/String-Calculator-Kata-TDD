@@ -6,6 +6,7 @@ class StringCalculator {
         }
         if (str.contains(",")) {
             int sum = 0;
+            String negNums = "";
             String[] splittedStr = str.split(",");
 
             for (String currEl : splittedStr) {
@@ -14,11 +15,14 @@ class StringCalculator {
                 } else {
                     int parsedNo = Integer.parseInt(currEl);
                     if (parsedNo < 0) {
-                        throw new RuntimeException("Negatives not allowed : " + currEl);
+                        negNums += " " + String.valueOf(parsedNo);
                     } else {
                         sum += parsedNo;
                     }
                 }
+            }
+            if (negNums.length() != 0) {
+                throw new RuntimeException("Negatives not allowed :" + negNums);
             }
             return sum;
         }
